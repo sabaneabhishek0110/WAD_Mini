@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+// In development, use '/api' (proxy handles routing)
+// In production, use the full backend URL from environment
+const baseURL = import.meta.env.PROD 
+  ? `${import.meta.env.VITE_BACKEND_URL}/api`
+  : '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL,
   withCredentials: true,
 });
 
